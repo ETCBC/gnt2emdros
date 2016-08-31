@@ -1,6 +1,6 @@
 **sblgnt2emdros 1.0**
 
-Converts the [SBLGNT *treebanks*](https://github.com/biblicalhumanities/greek-new-testament/tree/master/syntax-trees/sblgnt) to a raw [Emdros](http://emdros.org/download.html) file (mql).
+Converts the [SBLGNT *treebanks*](https://github.com/biblicalhumanities/greek-new-testament/tree/master/syntax-trees/sblgnt) to a raw [Emdros](http://emdros.org) file (mql).
 
 
 RUN INSTRUCTIONS
