@@ -1,0 +1,6 @@
+CREATE OBJECT TYPE
+[{name}
+{data}
+]
+GO
+

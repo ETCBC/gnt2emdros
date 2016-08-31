@@ -1,0 +1,5 @@
+CREATE ENUMERATION {name} = <
+{data}
+>
+GO
+

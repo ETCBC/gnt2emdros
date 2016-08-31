@@ -1,0 +1,5 @@
+CREATE OBJECT
+FROM MONADS= {monads}
+WITH ID_D={name} [
+{data}
+]

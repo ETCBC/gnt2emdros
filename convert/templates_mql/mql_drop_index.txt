@@ -1,0 +1,2 @@
+DROP INDEXES ON OBJECT TYPE[{name}] GO
+
