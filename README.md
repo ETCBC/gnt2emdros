@@ -5,7 +5,7 @@ Converts the [SBLGNT *treebanks*](https://github.com/biblicalhumanities/greek-ne
 
 RUN INSTRUCTIONS
 
-First, specify the location of the input directory that the input folder is stored in as well as the desired destination of output files in main.cfg.
+First, edit the main.cfg file to specify the location of the input directory as well as the desired destination of output files. 
 *ex: input = /Users/User/github/sblgnt2emdros/input*
 
 Second, run sblgnt from command line using run.py with the desired input as a first position argument. The program will retrieve all xml files stored in the source directory.
