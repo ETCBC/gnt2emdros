@@ -6,9 +6,11 @@ Converts the [SBLGNT treebanks](https://github.com/biblicalhumanities/greek-new-
 RUN INSTRUCTIONS
 
 First, edit the main.cfg file to specify the location of the input directory as well as the desired destination of output files. 
+
 *ex: input = /Users/User/github/sblgnt2emdros/input*
 
 Second, run sblgnt from command line using run.py with the desired input as a first position argument. The program will retrieve all xml files stored in the source directory.
+
 *ex: Python '/Users/User/github/sblgnt2emdros/convert/run.py' GNT*
 
 The program will generate a live report of its activities as well as a final report on what was created in the mql file.
