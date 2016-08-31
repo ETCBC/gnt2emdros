@@ -4,6 +4,7 @@ Converts the [SBLGNT *treebanks*](https://github.com/biblicalhumanities/greek-ne
 
 
 RUN INSTRUCTIONS
+
 First, specify the location of the input directory that the input folder is stored in as well as the desired destination of output files in main.cfg.
 *ex: input = /Users/User/github/sblgnt2emdros/input*
 
