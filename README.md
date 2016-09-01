@@ -4,14 +4,10 @@ Converts the [SBLGNT treebanks](https://github.com/biblicalhumanities/greek-new-
 
 RUN INSTRUCTIONS
 
-First, edit the main.cfg file to specify the location of the input directory as well as the desired destination of output files. 
-
-ex:  
+First, edit the main.cfg file to specify the location of the input directory as well as the desired destination of output files:  
 ```input = /Users/User/github/gnt2emdros/input```
 
-Second, note that the input directory should contain subdirectories (allowing multiple databases). The desired database is specified by referencing the subdirectory as a first position argument on run. 
-
-ex:  
+Second, note that the input directory should contain subdirectories (allowing multiple databases). The desired database is specified by referencing the subdirectory as a first position argument on run:  
 ```Python run.py SBL```
 
 Place the XML files directly into the subdirectory. The program will retrieve and process all the files. Ensure that they are numbered so that the script pulls them in order. The program will print a live report of its activities as well as a final report on what was created in the mql file.
