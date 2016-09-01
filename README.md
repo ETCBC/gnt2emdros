@@ -6,6 +6,7 @@ RUN INSTRUCTIONS
 
 First, edit the main.cfg file to specify the location of the input directory as well as the desired destination of output files:  
 ```input = /Users/User/github/gnt2emdros/input```
+You should also name the database under 'name.'
 
 Second, note that the input directory should contain subdirectories (allowing multiple databases). The desired database is specified by referencing the subdirectory as a first position argument on run:  
 ```Python run.py SBL```
