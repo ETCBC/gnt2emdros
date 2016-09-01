@@ -1,7 +1,6 @@
 **gnt2emdros 1.0**
 
-Converts the [SBLGNT treebanks](https://github.com/biblicalhumanities/greek-new-testament/tree/master/syntax-trees/sblgnt) to a raw [Emdros](http://emdros.org) file (mql).
-*Note: gnt2emdros (1.0) currently only works with the SBLGNT treebanks. Support for Nestle and lowfat versions is coming later.*
+Converts the [SBLGNT treebanks](https://github.com/biblicalhumanities/greek-new-testament/tree/master/syntax-trees/sblgnt) to a raw [Emdros](http://emdros.org) file (mql). Note: gnt2emdros (1.0) currently only works with the SBLGNT treebanks. Support for Nestle and lowfat versions is coming later.
 
 RUN INSTRUCTIONS
 
