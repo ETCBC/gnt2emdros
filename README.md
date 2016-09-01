@@ -20,7 +20,7 @@ Place the XML files directly into the subdirectory. The program will retrieve an
 Once the final mql file is generated, the file can be given an SQLite3 backend for running queries in Emdros. This step requires an installation of Emdros with command line functions.
 
 Simply run:  
-```mql -b 3 SBLGNT.mql```
+```mql -b 3 SBL.mql```
 
 You may then create a configuration file by following the instructions in the help manual included in Emdros under 'Help > Help Contents > Emdros Query Tool Users > Graphical version Users > Configuring the Program.'
 
