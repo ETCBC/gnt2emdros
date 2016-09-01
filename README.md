@@ -17,6 +17,7 @@ ex:
 
 Place the XML files directly into the subdirectory. The program will retrieve and process all the files. Ensure that they are numbered so that the script pulls them in order. The program will print a live report of its activities as well as a final report on what was created in the mql file.
 
+ADDITIONAL INSTRUCTIONS
 Once the final mql file is generated, the file can be given an SQLite3 backend for running queries in Emdros. This step requires an installation of Emdros with command line functions.
 
 Simply run:  
