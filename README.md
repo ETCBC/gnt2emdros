@@ -7,19 +7,19 @@ RUN INSTRUCTIONS
 
 First, edit the main.cfg file to specify the location of the input directory as well as the desired destination of output files. 
 
-ex: 
+ex:  
 ```input = /Users/User/github/gnt2emdros/input```
 
 Second, note that the input directory should contain subdirectories (allowing multiple databases). The desired database is specified by referencing the subdirectory as a first position argument on run. 
 
-ex: 
+ex:  
 ```Python run.py SBL```
 
 Place the XML files directly into the subdirectory. The program will retrieve and process all the files. Ensure that they are numbered so that the script pulls them in order. The program will print a live report of its activities as well as a final report on what was created in the mql file.
 
 Once the final mql file is generated, the file can be given an SQLite3 backend for running queries in Emdros. This step requires an installation of Emdros with command line functions.
 
-Simply run :
+Simply run:  
 ```mql -b 3 SBLGNT.mql```
 
 You may then create a configuration file by following the instructions in the help manual included in Emdros under 'Help > Help Contents > Emdros Query Tool Users > Graphical version Users > Configuring the Program.'
