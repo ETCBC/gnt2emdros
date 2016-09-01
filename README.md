@@ -7,19 +7,21 @@ RUN INSTRUCTIONS
 
 First, edit the main.cfg file to specify the location of the input directory as well as the desired destination of output files. 
 
-*ex: input = /Users/User/github/sblgnt2emdros/input*
+ex: 
+*input = /Users/User/github/gnt2emdros/input*
 
-Second, run sblgnt from command line using run.py with the desired input as a first position argument. The program will retrieve all xml files stored in the source directory.
+Second, note that the input directory should contain subdirectories (allowing multiple databases). The desired database is specified by referencing the subdirectory as a first position argument on run. 
 
-*ex: Python '/Users/User/github/sblgnt2emdros/convert/run.py' GNT*
+ex: 
+*Python run.py SBL*
 
-The program will generate a live report of its activities as well as a final report on what was created in the mql file.
+Place the XML files directly into the subdirectory. The program will retrieve and process all the files. Ensure that they are numbered so that the script pulls them in order. The program will print a live report of its activities as well as a final report on what was created in the mql file.
 
-Once the final mql file is generated, the file can be given an SQL lite 3 backend for running queries in Emdros. This step requires an installation of Emdros with command line functions.
+Once the final mql file is generated, the file can be given an SQLite3 backend for running queries in Emdros. This step requires an installation of Emdros with command line functions.
 
-Simply run 
+Simply run :
 *mql -b 3 SBLGNT.mql*
 
 You may then create a configuration file by following the instructions in the help manual included in Emdros under 'Help > Help Contents > Emdros Query Tool Users > Graphical version Users > Configuring the Program.'
 
-Connect to the database confirguration file and to the newly generated SQL lite file. You are now ready for MQL queries in the sblgnt.
+Connect to the database configuration file and to the newly generated SQLite file. You are now ready for MQL queries in the Greek New Testament.
