@@ -76,7 +76,7 @@ class Convert:
     trailers = ['.', ',', '; ', '·']
 
     no_enumeration = ['chapter', 'verse', 'sentenceId', 'nodeId', 'Start', 'End', 'Head', 'morphId', 'UnicodeLemma', 'Unicode',
-                      'UnicodeTrailer', 'distributional_parent', 'functional_parent', 'Rule']
+                      'UnicodeTrailer', 'distributional_parent', 'functional_parent', 'Rule', 'FunctionalTag', 'NormalizedForm', 'FormalTag', 'StrongNumber']
 
     def __init__(self, setup, sblgnt, mql):
 
