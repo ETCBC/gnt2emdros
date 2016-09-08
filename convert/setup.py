@@ -18,7 +18,7 @@ class Setup:
     def __init__(self):
         # program greeting
         print('*'*20)
-        print('This is SBLGNT2Emdros 1.1.')
+        print('This is SBLGNT2Emdros 1.1')
         print('*'*20)
 
 
