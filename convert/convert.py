@@ -66,7 +66,7 @@ class Convert:
         '59': 'Iacobi',
         '60': '1_Petri',
         '61': '2_Petri',
-        '62': 'a',
+        '62': '1_Ioannis',
         '63': '2_Ioannis',
         '64': '3_Ioannis',
         '65': 'Iudæ',
