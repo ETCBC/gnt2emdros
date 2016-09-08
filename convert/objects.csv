@@ -1,7 +1,7 @@
-book,book,Cat,oType
-chapter,chapter,Cat,oType
-verse,verse,Cat,oType,book,chapter
-sentence,nodeId,sentenceId,Head,oType,Cat
-clause,nodeId,Start,End,Head,Rule,ClType,oType,Cat,HasDet,function
-phrase,nodeId,Cat,Start,End,Head,Rule,function,HasDet,oType
-word,nodeId,Start,End,morphId,UnicodeLemma,Unicode,UnicodeTrailer,Cat,function,Gender,Case,Number,Mood,Tense,Voice,typ,Person,oType,Degree,Rule,Head
+book,book,Cat
+chapter,chapter,Cat
+verse,verse,Cat,book,chapter
+sentence,nodeId,sentenceId,Head,Cat
+clause,nodeId,Start,End,Head,Rule,ClType,Cat,HasDet,function
+phrase,nodeId,Cat,Start,End,Head,Rule,function,HasDet
+word,nodeId,Start,End,morphId,UnicodeLemma,Unicode,UnicodeTrailer,Cat,function,Gender,Case,Number,Mood,Tense,Voice,typ,Person,Degree,Rule,Head

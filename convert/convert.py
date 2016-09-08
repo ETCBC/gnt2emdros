@@ -44,39 +44,40 @@ class Convert:
     object_template = {}
 
     sbl_book_codes = {
-        '40': 'Matthew',
-        '41': 'Mark',
-        '42': 'Luke',
-        '43': 'John',
-        '44': 'Acts',
-        '45': 'Romans',
-        '46': 'ICorinthians',
-        '47': 'IICorinthians',
-        '48': 'Galatians',
-        '49': 'Ephesians',
-        '50': 'Philippians',
-        '51': 'Colossians',
-        '52': 'IThessalonians',
-        '53': 'IIThessalonians',
-        '54': 'ITimothy',
-        '55': 'IITimothy',
-        '56': 'Titus',
-        '57': 'Philemon',
-        '58': 'Hebrews',
-        '59': 'James',
-        '60': 'IPeter',
-        '61': 'IIPeter',
-        '62': 'IJohn',
-        '63': 'IIJohn',
-        '64': 'IIIJohn',
-        '65': 'Jude',
-        '66': 'Revelation'
+        '40': 'secundum_Matthæum',
+        '41': 'secundum_Marcum',
+        '42': 'secundum_Lucam',
+        '43': 'secundum_Ioannem',
+        '44': 'Actus',
+        '45': 'ad_Romanos',
+        '46': '1_ad_Corinthios',
+        '47': '2_ad_Corinthios',
+        '48': 'ad_Galatas',
+        '49': 'ad_Ephesios',
+        '50': 'ad_Philippenses',
+        '51': 'ad_Colossenses',
+        '52': '1_ad_Thessalonicenses',
+        '53': '2_ad_Thessalonicenses',
+        '54': '1_ad_Timotheum',
+        '55': '2_ad_Timotheum',
+        '56': 'ad_Titum',
+        '57': 'ad_Philemonem',
+        '58': 'ad_Hebræos',
+        '59': 'Iacobi',
+        '60': '1_Petri',
+        '61': '2_Petri',
+        '62': 'a',
+        '63': '2_Ioannis',
+        '64': '3_Ioannis',
+        '65': 'Iudæ',
+        '66': 'Apocalypsis'
     }
 
     trailers = ['.', ',', '; ', '·']
 
-    no_enumeration = ['chapter', 'verse', 'sentenceId', 'nodeId', 'Start', 'End', 'Head', 'morphId', 'UnicodeLemma', 'Unicode',
-                      'UnicodeTrailer', 'distributional_parent', 'functional_parent', 'Rule', 'FunctionalTag', 'NormalizedForm', 'FormalTag', 'StrongNumber']
+    no_enumeration = ['book', 'chapter', 'verse', 'sentenceId', 'nodeId', 'Start', 'End', 'Head', 'morphId', 'UnicodeLemma',
+                      'Unicode', 'UnicodeTrailer', 'distributional_parent', 'functional_parent', 'Rule',
+                      'FunctionalTag', 'NormalizedForm', 'FormalTag', 'StrongNumber', 'Person']
 
     def __init__(self, setup, sblgnt, mql):
 
@@ -89,15 +90,15 @@ class Convert:
             self.object_template[otype] = {x for x in setup.mql_settings['object_types'][otype]}
 
         # this method looks up the object type of a node
-        def object_type(node):
-            if nodes[node]['Cat'] == 'intj':
-                if 'Unicode' in nodes[node]:
+        def object_type(node, nodes_dict):
+            if nodes_dict[node]['Cat'] == 'intj':
+                if 'Unicode' in nodes_dict[node]:
                     return 'word'
                 else:
                     return 'clause'
             else:
                 for type in self.object_conversion:
-                    if nodes[node]['Cat'] in self.object_conversion[type]:
+                    if nodes_dict[node]['Cat'] in self.object_conversion[type]:
                         return type
 
         # A slight adjustment to the database is necessary to create the sentence objects.
@@ -130,20 +131,20 @@ class Convert:
         monad_counter = 0
         # Because the nodes dict is ordered, the code can simply iterate through all word nodes in the dict.
         for n in nodes:
-            if object_type(n) == 'word':
+            if object_type(n, nodes) == 'word':
                 monad_counter += 1
                 monads[n] = [monad_counter]
         # Here the code assembles monad sets for linguistic objects by using node_descendants.
         for n in nodes:
-            if object_type(n) != 'word':
+            if object_type(n, nodes) != 'word':
                 beginning = None
                 end = None
                 for nd in node_descendants[n]:
-                    if object_type(nd) == 'word':
+                    if object_type(nd, nodes) == 'word':
                         beginning = monads[nd][0]
                         break           # breaks  loop at first word node descendant, leaving the first as 'beginning'
                 for nd in node_descendants[n]:
-                    if object_type(nd) == 'word':
+                    if object_type(nd, nodes) == 'word':
                         end = monads[nd][0]    # iterates through all node descendants, leaving the last one as 'end'
                 monads[n] = [beginning, end]
 
@@ -152,7 +153,7 @@ class Convert:
         # unfulfilled attributes are simply left blank
         # the code below checks each node against the object template and fills in any missing attribute slots.
         for n in nodes:
-            for data_slot in self.object_template[object_type(n)]:
+            for data_slot in self.object_template[object_type(n, nodes)]:
                 if data_slot not in nodes[n]:
                     nodes[n][data_slot] = ''
 
@@ -257,7 +258,7 @@ class Convert:
 
         # fill unicode trailer attribute and remove from unicode attribute
         for n in nodes:
-            if object_type(n) == 'word':
+            if object_type(n, nodes) == 'word':
                 for letter in nodes[n]['Unicode']:
                     if letter in self.trailers:
                         nodes[n]['UnicodeTrailer'] = letter
@@ -270,7 +271,6 @@ class Convert:
         for n in nodes:
             oid_count += 1
             node_oid[oid_count] = nodes[n]
-            node_oid[oid_count]['oType'] = object_type(n)
             monads_oid[oid_count] = monads[n]
 
         # TODO: preclude this step and use splits instead above where needed to simplify
@@ -298,12 +298,6 @@ class Convert:
             if 'HasDet' in nodes[n] and not nodes[n]['HasDet']:
                 nodes[n]['HasDet'] = 'False'
 
-        for n in self.nodes:
-            if 'Person' in self.nodes[n]:
-                if self.nodes[n]['Person'] == 'First':
-                    del self.nodes[n]['Person']
-                    self.nodes[n]['Person'] = 'frst'
-
         self.enumerations = {}
 
         for n in self.nodes:
@@ -329,6 +323,7 @@ class Convert:
                 self.nodes[n]['Rule'] = self.nodes[n]['Rule'].replace('-','')
 
         print(str(len(self.nodes))+' objects found...')
+
 
     def write_mql(self):
         mql = self.mql
@@ -362,7 +357,7 @@ class Convert:
         mql.drop_index('word')
         mql.init_object('word')
         for n in self.nodes:
-            if self.nodes[n]['oType'] == 'word':
+            if self.object_type(n, self.nodes) == 'word':
                 mql.add_object(n, self.nodes[n], monads=self.monads[n])
         mql.go()
         mql.add_note('create indexes')
@@ -377,8 +372,10 @@ class Convert:
                 mql.drop_index(object)
                 mql.init_object(object)
                 for n in self.nodes:
-                    if self.nodes[n]['oType'] == object:
+                    if self.object_type(n, self.nodes) == object:
                         mql.add_object(n, self.nodes[n], monads= self.monads[n])
+
+
                 mql.go()
                 mql.add_note('create indexes')
                 mql.create_index(object)

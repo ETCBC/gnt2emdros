@@ -20,7 +20,7 @@ class Mql:
     }
 
     data_format_key = {
-        'book': ['type', 'book_t'],
+        'book': ['string', 'string'],
         'Cat': ['type', 'Cat_t'],
         'chapter': ['integer', 'integer'],
         'verse': ['integer', 'integer'],
@@ -42,8 +42,7 @@ class Mql:
         'Tense': ['type', 'Tense_t'],
         'Voice': ['type', 'Voice_t'],
         'typ': ['type', 'typ_t'],
-        'oType': ['type', 'oType_t'],
-        'Person': ['type', 'Person_t'],
+        'Person': ['string', 'string'],
         'ClType': ['type', 'ClType_t'],
         'sentenceId': ['string', 'string'],
         'Degree':['type','Degree_t']
